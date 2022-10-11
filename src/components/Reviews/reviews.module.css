@@ -1,0 +1,29 @@
+.List {
+    list-style-type: none;
+    font-size: 20px;
+    line-height: 1.1em;
+    text-decoration: none;
+}
+
+.ListItem {
+    text-decoration: none;
+}
+
+.Title {
+    font-weight: 600;
+    font-size: 14px;
+    color: grey
+}
+
+.Value {
+    font-weight: 600;
+    font-size: 16px;
+    color: black;
+}
+
+.Content {
+    -webkit-box-shadow: 8px 5px 15px 0px rgba(0,0,0,0.78); 
+    box-shadow: 8px 5px 15px 0px rgba(0,0,0,0.78);
+    padding: 5px;
+    border-radius: 3px;
+}

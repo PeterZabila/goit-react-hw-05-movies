@@ -1,4 +1,14 @@
-.menu {
+
+.Header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 15px 30px;
+  background-color: black;
+  }
+
+  .menu {
     display: flex;
     margin-right: auto;
 }

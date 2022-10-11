@@ -1,4 +1,5 @@
 import { List } from '../../components/List/List';
+import PropTypes from 'prop-types';
 
 export default function HomePage({ results }) {
   return (
@@ -8,3 +9,7 @@ export default function HomePage({ results }) {
     </>
   );
 };
+
+HomePage.propTypes = {
+  results: PropTypes.array,
+}

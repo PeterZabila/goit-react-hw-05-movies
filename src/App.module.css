@@ -6,9 +6,3 @@
     align-items: center;
     color: #010101;
 }
-
-.Container {
-    display: flex;
-    justify-content: center;
-    padding: 15px;
-}
