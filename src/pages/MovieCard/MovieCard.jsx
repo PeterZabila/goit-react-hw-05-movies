@@ -58,7 +58,7 @@ export default function MovieCard() {
                 
                     <NavLink to="cast" className={getClassName}><h4>Cast</h4></NavLink>
                     <NavLink to="reviews" className={getClassName}><h4>Reviews</h4></NavLink>
-                    <Suspense fallback={<h1>Ahtung!</h1>}>
+                    <Suspense>
                         <Outlet/>
                     </Suspense>
                     

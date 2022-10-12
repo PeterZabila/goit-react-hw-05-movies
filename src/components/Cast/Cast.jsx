@@ -2,7 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import { getCast } from 'shared/shared';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import styles from './cast.module.css'
 
 export default function Cast() {
@@ -38,8 +38,4 @@ export default function Cast() {
        </ul>
     </>
   )
-}
-
-Cast.propTypes = {
-  getCast: PropTypes.func,
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { getReviews } from 'shared/shared';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import styles from './reviews.module.css'
 
 export default function Reviews() {
@@ -35,8 +35,4 @@ const isReviews = reviews.length > 0;
           </ul>
           </> ) : (<p>No reviews yet</p>)
   )
-}
-
-Reviews.propTypes = {
-  getReviews: PropTypes.func,
 }

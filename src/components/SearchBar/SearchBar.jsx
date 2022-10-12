@@ -3,7 +3,7 @@ import styles from './searchBar.module.css';
 import pic from './search.png';
 import { List } from "components/List/List";
 import { fetchSearch } from '../../shared/shared';
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 
 
 export default function SearchBar() {
@@ -47,8 +47,4 @@ export default function SearchBar() {
             {query && <List results={results}/>}
         </>
     )
-}
-
-SearchBar.propTypes = {
-    fetchSearch: PropTypes.func,
 }
