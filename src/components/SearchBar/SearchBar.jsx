@@ -3,24 +3,31 @@ import styles from './searchBar.module.css';
 import pic from './search.png';
 import { List } from "components/List/List";
 import { fetchSearch } from '../../shared/shared';
-// import PropTypes from 'prop-types'
-
+import  { useSearchParams } from 'react-router-dom';
 
 export default function SearchBar() {
-    const [query, setQuery] = useState('');
     const [results, setResults] = useState([]);
+    const [searchParams, setSearchParams] = useSearchParams();
 
+    const filter = searchParams.get('filter') ?? "";
     useEffect(() => {
-        setResults([]);
-    }, []);
+        if(filter !== "") {
+            fetchSearch(filter).then(response => {
+                const results = response.map(movie => movie);
+                // console.log(results);
+                setResults(results)});
+        } else {
+            setResults([]);
+        }
+    }, [filter]);
 
     const handleChange = e => {
-        setQuery(e.target.value);
+        setSearchParams(e.target.value !== '' ? { filter: e.target.value} : {})
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault();
-        fetchSearch(query).then(response => {
+        e.preventDefault(); 
+        fetchSearch(filter).then(response => {
             console.log(response);
             const results = response.map(movie => movie);
             setResults(results)});
@@ -40,11 +47,11 @@ export default function SearchBar() {
                             autoComplete="off"
                             autoFocus
                             placeholder="Search movies"
-                            value={query}
+                            value={filter}
                             onChange={handleChange}
                         />
             </form>
-            {query && <List results={results}/>}
+            {filter && <List results={results}/>}
         </>
     )
 }

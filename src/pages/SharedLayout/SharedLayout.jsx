@@ -11,8 +11,8 @@ export const SharedLayout = () => {
   return (
     <>
         <nav className={styles.menu}>
-          <NavLink to="/" className={getClassName}>Home</NavLink>
-          <NavLink to="/movies" className={getClassName}>Movies</NavLink>
+          <NavLink to="/" className={getClassName} end>Home</NavLink>
+          <NavLink to="/movies" className={getClassName} end>Movies</NavLink>
         </nav>
         <Suspense>
           <Outlet />

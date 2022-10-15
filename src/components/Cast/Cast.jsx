@@ -2,6 +2,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import { getCast } from 'shared/shared';
+import { NavLink } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 import styles from './cast.module.css'
 
@@ -9,7 +10,7 @@ export default function Cast() {
   const [ cast, setCast ] = useState([]);
   const { id } = useParams();
   console.log(id);
-  useLocation();
+ const location = useLocation();
 
   useEffect(() => {
     getCast(parseInt(id)).then(response => {
@@ -36,6 +37,7 @@ export default function Cast() {
           )
         })}
        </ul>
+       <NavLink to={location.state.from}>Go back to top</NavLink>
     </>
   )
 }

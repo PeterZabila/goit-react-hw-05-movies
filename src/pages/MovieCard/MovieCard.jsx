@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate, NavLink, Outlet } from "react-router-dom";
+import { useParams, useLocation, NavLink, Outlet } from "react-router-dom";
 import { fetchMovie } from "shared/shared";
 import { Suspense } from "react";
 import PropTypes from 'prop-types'; 
@@ -16,7 +16,7 @@ export default function MovieCard() {
   const [error, setError] = useState(null);
 
   const { id } = useParams();
-  const navigate = useNavigate();
+ const location = useLocation();
 
   useEffect(() => {
     fetchMovie(id).then(response => {
@@ -33,12 +33,12 @@ export default function MovieCard() {
     });
   }, [id]);
 
-  const goBack = () => navigate(-1);
+  const comeBack = location.state?.from ?? '/';
 
   return (
     
     <div className="container">
-        <button onClick={goBack} className={styles.Button}>Go back</button>
+        <button className={styles.Button}> <NavLink to={comeBack}>Go back</NavLink> </button>
 
         {loading && <Loader />}
         {error && <p>Something went wrong</p>}
@@ -56,8 +56,8 @@ export default function MovieCard() {
                     <br />
                     <h3>Additional information</h3>
                 
-                    <NavLink to="cast" className={getClassName}><h4>Cast</h4></NavLink>
-                    <NavLink to="reviews" className={getClassName}><h4>Reviews</h4></NavLink>
+                    <NavLink to="cast" className={getClassName} state={{ from: location }}><h4>Cast</h4></NavLink>
+                    <NavLink to="reviews" className={getClassName} state={{ from: location }}><h4>Reviews</h4></NavLink>
                     <Suspense>
                         <Outlet/>
                     </Suspense>

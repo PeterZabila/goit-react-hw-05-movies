@@ -1,13 +1,14 @@
 import React from 'react';
 import { getReviews } from 'shared/shared';
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation, NavLink } from 'react-router-dom';
 // import PropTypes from 'prop-types';
 import styles from './reviews.module.css'
 
 export default function Reviews() {
   const [reviews, setReviews] = useState([]);
   const { id } = useParams();
+  const location = useLocation();
 
   useEffect(() => {
     getReviews(id).then(response => {
@@ -33,6 +34,7 @@ const isReviews = reviews.length > 0;
             }
               )}
           </ul>
+          <NavLink to={location.state.from}>Go back to top</NavLink>
           </> ) : (<p>No reviews yet</p>)
   )
 }
