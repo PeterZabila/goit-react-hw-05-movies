@@ -16,7 +16,7 @@ export default function MovieCard() {
   const [error, setError] = useState(null);
 
   const { id } = useParams();
- const location = useLocation();
+  const location = useLocation();
 
   useEffect(() => {
     fetchMovie(id).then(response => {
@@ -33,12 +33,10 @@ export default function MovieCard() {
     });
   }, [id]);
 
-  const comeBack = location.state?.from ?? '/';
-
   return (
     
     <div className="container">
-        <button className={styles.Button}> <NavLink to={comeBack}>Go back</NavLink> </button>
+        <button className={styles.Button}> <NavLink to={location.state?.from ?? '/'} >Go back</NavLink> </button>
 
         {loading && <Loader />}
         {error && <p>Something went wrong</p>}
@@ -56,8 +54,8 @@ export default function MovieCard() {
                     <br />
                     <h3>Additional information</h3>
                 
-                    <NavLink to="cast" className={getClassName} state={{ from: location }}><h4>Cast</h4></NavLink>
-                    <NavLink to="reviews" className={getClassName} state={{ from: location }}><h4>Reviews</h4></NavLink>
+                    <NavLink to={"cast"} className={getClassName} state={{ from: location }} end><h4>Cast</h4></NavLink>
+                    <NavLink to={"reviews"} className={getClassName} state={{ from: location }} ><h4>Reviews</h4></NavLink>
                     <Suspense>
                         <Outlet/>
                     </Suspense>

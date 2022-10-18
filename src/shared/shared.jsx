@@ -50,7 +50,7 @@ export async function getCast(id) {
       console.log(error);
       return `No results`;
     });
-    console.log(response.data)
+    // console.log(response.data)
   return response.data.cast;
 }
 

@@ -12,7 +12,7 @@ export default function Reviews() {
 
   useEffect(() => {
     getReviews(id).then(response => {
-      console.log(response);
+      // console.log(response);
       setReviews(response);
     })
   }, [id])

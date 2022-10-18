@@ -9,12 +9,12 @@ import styles from './cast.module.css'
 export default function Cast() {
   const [ cast, setCast ] = useState([]);
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
  const location = useLocation();
 
   useEffect(() => {
     getCast(parseInt(id)).then(response => {
-      console.log(response)
+      // console.log(response)
       setCast(response)});
   }, [id]);
 
