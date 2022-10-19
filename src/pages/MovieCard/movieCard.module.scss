@@ -9,14 +9,14 @@
     padding: 0px 15px;
     line-height: 0.2em;
     color: darkgrey;
-    margin-right: 5px;
     border: 1px solid lightgrey;
     background-color: #fff;
     border-radius: 3px;
-}
-.link:active {
-    background-color: #6C6C6C;
+
+    &.active {
+        background-color: #6C6C6C;
         color: #fff;
+    }
 }
 
 .Button {
@@ -24,9 +24,4 @@
     padding: 5px 10px;
     border: none;
     border-radius: 3px;
-}
-
-.Button:focus {
-    background: #fff;
-    color: grey;
 }

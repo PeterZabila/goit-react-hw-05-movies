@@ -4,7 +4,7 @@ import { fetchMovie } from "shared/shared";
 import { Suspense } from "react";
 import PropTypes from 'prop-types'; 
 import Loader from "components/Loader/Loader";
-import styles from './movieCard.module.css';
+import styles from './movieCard.module.scss';
 
 const getClassName = ({isActive}) => {
     return isActive ? `${styles.link} ${styles.active}` : styles.link;
@@ -16,8 +16,7 @@ export default function MovieCard() {
   const [error, setError] = useState(null);
 
   const { id } = useParams();
-  const location = useLocation();
-
+  
   useEffect(() => {
     fetchMovie(id).then(response => {
         // console.log(response)
@@ -33,10 +32,12 @@ export default function MovieCard() {
     });
   }, [id]);
 
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? "/";
+  
   return (
-    
     <div className="container">
-        <button className={styles.Button}> <NavLink to={location.state?.from ?? '/'} >Go back</NavLink> </button>
+        <button className={styles.Button}> <NavLink to={backLinkHref} >Go back</NavLink> </button>
 
         {loading && <Loader />}
         {error && <p>Something went wrong</p>}
@@ -54,8 +55,8 @@ export default function MovieCard() {
                     <br />
                     <h3>Additional information</h3>
                 
-                    <NavLink to={"cast"} className={getClassName} state={{ from: location }} end><h4>Cast</h4></NavLink>
-                    <NavLink to={"reviews"} className={getClassName} state={{ from: location }} ><h4>Reviews</h4></NavLink>
+                    <NavLink to={"cast"} className={getClassName} state={{ from: location.state.from }} end><h4>Cast</h4></NavLink>
+                    <NavLink to={"reviews"} className={getClassName} state={{ from: location.state.from }} end><h4>Reviews</h4></NavLink>
                     <Suspense>
                         <Outlet/>
                     </Suspense>
